@@ -36,7 +36,17 @@ function actualizarBotonesAgregar () {
   } )
 }
 
-let productosEnCarrito = []
+let productosEnCarrito
+
+let productosEnCarritoLs = (localStorage.getItem("productos-en-carrito"))
+
+if (productosEnCarritoLs) {
+  productosEnCarrito = JSON.parse(productosEnCarritoLs)
+  actNumero
+} else {
+  productosEnCarrito = [];
+}
+
 
 function agregarAlCarrito(e) {
 
@@ -45,11 +55,13 @@ function agregarAlCarrito(e) {
 
   if(productosEnCarrito.some(Cervezas => Cervezas.id === idButton)){ 
       const index = productosEnCarrito.findIndex(Cervezas => Cervezas.id === idButton)
-      productosEnCarrito[index].cantidad++
+      productosEnCarrito[index].cantidad++;
     } else {
-    productoAgregado.cantidad = 1
+    productoAgregado.cantidad = 1;
     productosEnCarrito.push(productoAgregado)
   }
+
+console.log(productosEnCarrito);
 
   actNumero()
 
@@ -61,67 +73,3 @@ function actNumero () {
   let newNumero = productosEnCarrito.reduce((acc, Cervezas) => acc + Cervezas.cantidad, 0)
   numero.innerText = newNumero
 }
-
-
-// console.log(botonesAgregar); --- Reactivar
-
-// // Array Cervezas
-// const totalCerveza = [schneider, brahma, quilmes, budweiser]
-
-// // Funciones
-
-// const menuCervezas = document.querySelector('#menuCervezas')
-// const button = document.querySelector('.button')
-// const producto01 = document.querySelector('.producto01')
-
-
-// const mostrarCerveza = (e) => {
-// //console.log(e.target);
-// const idCervezaSeleccionada = e.target.closest('div').getAttribute('data-id')
-// console.log(idCervezaSeleccionada);
-// const cervezaSeleccionada = totalCerveza.find((cerveza) => cerveza.id == idCervezaSeleccionada)
-// console.log(cervezaSeleccionada);
-
-// //cervezaSeleccionada.textContent = `#${cervezaSeleccionada.id}`
-// button.setAttribute('data-id', cervezaSeleccionada)
-
-// console.log(cervezaSeleccionada);
-    
-// }
-
-
-// const cargarProductos = () => {
-//     totalCerveza.forEach((cerveza) => {
-//         const listaProductos = document.createElement('div');
-//         listaProductos.classList.add('producto01')
-//         listaProductos.setAttribute('data-id', cerveza.id)
-//         listaProductos.innerHTML = `
-//         <img src="${Cerveza.img}" alt="Producto1">
-//         <h3 class="productoTitulo">${Cerveza.marca}</h3>^
-//         <p class="cantidadLatas">${Cerveza.cantidad}</p>
-//         <p class="productoPrecio">${Cerveza.precio}</p>
-//         <button class= "button01" > Comprar </button>`
-        
-        
-//         menuCervezas.append(listaProductos)  
-        
-//     })
-    
-//     const listaProductos1 = document.querySelectorAll('.producto01')
-//     console.log(listaProductos1);
-//     listaProductos1.forEach((button) => {
-//         button.addEventListener('click', mostrarCerveza)
-//     })
-    
-    
-    
-// }
-
-// const agregarCerveza = (e) => {
-//     console.log(e.target);
-//     button.addEventListener('click', agregarCerveza)
-    
-// }
-
-
-// cargarProductos()

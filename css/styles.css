@@ -160,11 +160,13 @@ main{
     padding: 1rem;    
 }
 
-.carrito-producto {
+.carrito-producto1 {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: space-around;
     background-color: grey;
     padding: 1rem;
+    margin: 1rem;
     border-radius: 1rem;
     padding-right: 1rem;
 }
@@ -194,7 +196,7 @@ main{
 
 .contenedor-carrito {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 1.5rem;
 }
 
@@ -275,6 +277,6 @@ main{
     display: none;
 }
 
-.desactivado{
+/* .desactivado{
     display: none;
-}
+} */
