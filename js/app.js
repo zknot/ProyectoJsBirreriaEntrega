@@ -38,11 +38,11 @@ function actualizarBotonesAgregar () {
 
 let productosEnCarrito
 
-let productosEnCarritoLs = (localStorage.getItem("productos-en-carrito"))
+const productosEnCarritoLs = (localStorage.getItem("productos-en-carrito"));
 
 if (productosEnCarritoLs) {
   productosEnCarrito = JSON.parse(productosEnCarritoLs)
-  actNumero
+  actNumero();
 } else {
   productosEnCarrito = [];
 }
